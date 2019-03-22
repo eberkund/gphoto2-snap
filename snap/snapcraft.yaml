@@ -33,7 +33,7 @@ layout:
 apps:
   gphoto2:
     command: usr/bin/gphoto2
-    plugs: [camera, raw-usb]
+    plugs: [camera, raw-usb, network-control, home, removable-media]
 
 parts:
   gphoto2:
