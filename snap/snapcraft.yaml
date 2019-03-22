@@ -38,4 +38,6 @@ apps:
 parts:
   gphoto2:
     plugin: nil
-    stage-packages: [gphoto2, libslang2, libgpm2]
+    stage-packages: 
+      - to amd64: ["gphoto2:amd64", "libslang2:amd64", "libgpm2:amd64"]
+      - to armhf: ["gphoto2:armhf", "libslang2:armhf", "libgpm2:armhf"]
