@@ -1,7 +1,6 @@
 name: gphoto2-eberkund
 version: latest
-summary: |
-  The gphoto2 command-line tool for accessing and controlling digital cameras.
+summary: The gphoto2 command-line tool for accessing and controlling digital cameras.
 description: |
   gPhoto2 is a free, redistributable, ready to use set of digital camera
   software applications for Unix-like systems, written by a whole team of
