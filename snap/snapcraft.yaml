@@ -1,8 +1,7 @@
 name: gphoto2
 version: latest
-# version-script: |
-#   gphoto2 --version | head -n 1 | sed 's|gphoto2 ||'
-summary: The gphoto2 command-line tool for accessing and controlling digital cameras. 
+summary: |
+  The gphoto2 command-line tool for accessing and controlling digital cameras.
 description: |
   gPhoto2 is a free, redistributable, ready to use set of digital camera
   software applications for Unix-like systems, written by a whole team of
@@ -24,20 +23,24 @@ grade: stable
 confinement: strict
 base: core18
 
-layout:
-  /usr/lib/$SNAPCRAFT_ARCH_TRIPLET/libgphoto2:
-    bind: $SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/libgphoto2
-  /usr/lib/$SNAPCRAFT_ARCH_TRIPLET/libgphoto2_port:
-    bind: $SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/libgphoto2_port
-
 apps:
   gphoto2:
+    environment:
+      CAMLIBS: $SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/libgphoto2/2.5.9
+      IOLIBS: $SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/libgphoto2_port/0.12.0
     command: usr/bin/gphoto2
-    plugs: [camera, raw-usb, network-control, home, removable-media]
+    plugs: 
+      - camera
+      - raw-usb 
+      - network-control
+      - removable-media
+      - home
 
 parts:
   gphoto2:
     plugin: nil
     stage-packages: 
-      - to amd64: ["gphoto2:amd64", "libslang2:amd64", "libgpm2:amd64"]
-      - to armhf: ["gphoto2:armhf", "libslang2:armhf", "libgpm2:armhf"]
+      - gphoto2
+      - libslang2
+      - libgpm-dev
+      - libreadline-dev
