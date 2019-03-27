@@ -22,13 +22,17 @@ grade: stable
 confinement: strict
 base: core18
 
+layout:
+  /usr/lib/x86_64-linux-gnu/libgpm.so.2:
+    bind: $SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/libgpm.so
+
 apps:
   gphoto2:
-    environment:
-      CAMLIBS: $SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/libgphoto2/2.5.9
-      IOLIBS: $SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/libgphoto2_port/0.12.0
     command: usr/bin/gphoto2
-    plugs: 
+    environment:
+      CAMLIBS: $SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/libgphoto2/2.5.16/
+      IOLIBS: $SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/libgphoto2_port/0.12.0/
+    plugs:  
       - camera
       - raw-usb 
       - network-control
@@ -41,5 +45,6 @@ parts:
     stage-packages: 
       - gphoto2
       - libslang2
-      - libgpm-dev
-      - libreadline-dev
+      - libgpm2
+      - libreadline7
+      - libtinfo5
