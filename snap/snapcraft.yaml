@@ -24,14 +24,15 @@ base: core18
 
 layout:
   /usr/lib/x86_64-linux-gnu/libgpm.so.2:
-    bind: $SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/libgpm.so
+    bind-file: $SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/libgpm.so
+  /usr/lib/$SNAPCRAFT_ARCH_TRIPLET/libgphoto2:
+    bind: $SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/libgphoto2
+  /usr/lib/$SNAPCRAFT_ARCH_TRIPLET/libgphoto2_port:
+    bind: $SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/libgphoto2_port
 
 apps:
   gphoto2:
     command: usr/bin/gphoto2
-    environment:
-      CAMLIBS: $SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/libgphoto2/2.5.16/
-      IOLIBS: $SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/libgphoto2_port/0.12.0/
     plugs:  
       - camera
       - raw-usb 
