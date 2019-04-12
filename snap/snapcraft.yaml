@@ -36,7 +36,8 @@ apps:
     plugs:  
       - camera
       - raw-usb 
-      - network-control
+      - mount-observe
+      - hardware-observe
       - removable-media
       - home
 
